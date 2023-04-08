@@ -10,8 +10,9 @@ export default async function Home() {
       <ul>
         {articles && articles.map((article: Article) => (
           <li key={article.id}>
-            {article.title}
-              <a href="article/1">Go to pages/article/</a>
+            <Link href={{ pathname: "article/" + article.id }}>
+              {article.title}
+            </Link>
           </li>
         ))}
       </ul>
