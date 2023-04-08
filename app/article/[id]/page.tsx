@@ -1,4 +1,3 @@
-import { NextPage } from "next";
 import { getArticle } from "../../service/article"
 import { Article } from "../../types/article";
 
@@ -8,15 +7,14 @@ interface PageProps {
 }
 
 export default async function Article(pageProps: PageProps) {
-  const id = pageProps.params.id;
-  const article = await getArticle(id)
+  const article = await getArticle(pageProps.params.id)
   return (
     <div>
       {(() => {
         if (article) {
           return (
             <div>
-              <h2>{article.title}</h2>
+              <h2 className="text-3xl font-bold p-3">{article.title}</h2>
               <div>
                 {article.body}
               </div>

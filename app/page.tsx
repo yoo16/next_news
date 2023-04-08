@@ -6,11 +6,11 @@ export default async function Home() {
   const articles = await getLatestArticles()
   return (
     <div>
-      <h1>新着記事</h1>
+      <h2 className="text-3xl font-bold p-3">新着記事</h2>
       <ul>
         {articles && articles.map((article: Article) => (
           <li key={article.id}>
-            <Link href={{ pathname: "article/" + article.id }}>
+            <Link className="text-blue-500 p-3" href={{ pathname: "article/" + article.id }}>
               {article.title}
             </Link>
           </li>
