@@ -1,23 +1,14 @@
-import { News } from './types';
-
-async function getNewsList() {
-  const res = await fetch("http://localhost:8080/api/news/all");
-  if (res.ok) {
-    const data = await res.json();
-    return data as News[]
-  } else {
-    throw new Error("Failed to fetch articles");
-  }
-}
+import { Article } from './types/article';
+import { getLatestArticles } from "./service/article";
 
 export default async function Home() {
-  const newsList = await getNewsList();
+  const articles = await getLatestArticles()
   return (
     <div>
       <h1>新着記事</h1>
       <ul>
-        {newsList.map((news: News) => (
-          <li key={news.id}>{news.title}</li>
+        {articles.map((article: Article) => (
+          <li key={article.id}>{article.title}</li>
         ))}
       </ul>
     </div>
