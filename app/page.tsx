@@ -8,7 +8,7 @@ export default async function Home() {
     <div>
       <h1>新着記事</h1>
       <ul>
-        {articles.map((article: Article) => (
+        {articles && articles.map((article: Article) => (
           <li key={article.id}>
             {article.title}
               <a href="article/1">Go to pages/article/</a>
